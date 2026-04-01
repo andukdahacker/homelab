@@ -1,0 +1,105 @@
+# generated: 2026-04-01
+# last_updated: 2026-04-01
+# project: homelab
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: /Users/ducdo/Desktop/code/personal/homelab/_bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-04-01
+last_updated: 2026-04-01
+project: homelab
+project_key: NOKEY
+tracking_system: file-system
+story_location: /Users/ducdo/Desktop/code/personal/homelab/_bmad-output/implementation-artifacts
+
+development_status:
+  # Epic 1: Platform Foundation & Remote Access
+  epic-1: backlog
+  1-1-project-repository-host-initialization: backlog
+  1-2-docker-compose-core-services-caddy-reverse-proxy: backlog
+  1-3-tailscale-vpn-remote-access: backlog
+  1-4-gitea-setup-repository-hosting: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: System Monitoring & Data Protection
+  epic-2: backlog
+  2-1-loki-log-aggregation-grafana-datasource: backlog
+  2-2-system-container-health-dashboards: backlog
+  2-3-automated-backups-with-restic: backlog
+  2-4-backup-restore-recovery-verification: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: AI-Powered HN Digest — Walking Skeleton
+  epic-3: backlog
+  3-1-ai-routing-layer: backlog
+  3-2-email-delivery-service: backlog
+  3-3-health-status-handlers: backlog
+  3-4-hn-digest-service: backlog
+  3-5-pipeline-health-dashboard-runbook: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Workflow Automation
+  epic-4: backlog
+  4-1-n8n-workflow-configuration-ai-integration: backlog
+  4-2-scheduled-webhook-triggered-workflows: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Trend Analysis & Idea Generation
+  epic-5: backlog
+  5-1-multi-source-scraping: backlog
+  5-2-ai-clustering-opportunity-scoring: backlog
+  5-3-morning-digest-email-manual-trigger: backlog
+  epic-5-retrospective: optional
+
+  # Epic 6: Production Monitoring & Alerting
+  epic-6: backlog
+  6-1-log-ingestion-railway-sentry-gcp: backlog
+  6-2-ai-anomaly-detection-root-cause-analysis: backlog
+  6-3-alert-email-delivery-within-15-minutes: backlog
+  6-4-external-log-aggregation-in-grafana: backlog
+  epic-6-retrospective: optional
+
+  # Epic 7: Knowledge Layer & RAG
+  epic-7: backlog
+  7-1-qdrant-client-embedding-pipeline: backlog
+  7-2-auto-indexing-system-outputs: backlog
+  7-3-natural-language-query-interface: backlog
+  epic-7-retrospective: optional
+
+  # Epic 8: Life Automation (Vision)
+  epic-8: backlog
+  8-1-voice-note-transcription-pipeline: backlog
+  8-2-expense-invoice-data-extraction: backlog
+  8-3-platform-cost-uptime-monitoring: backlog
+  8-4-meeting-preparation-briefings: backlog
+  8-5-bookmark-rescue-knowledge-indexing: backlog
+  epic-8-retrospective: optional
