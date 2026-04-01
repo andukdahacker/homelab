@@ -1,0 +1,7 @@
+# No 'version:' key — Docker Compose v5 spec
+networks:
+  homelab:
+    driver: bridge
+
+services:
+  # Services defined in Story 1.2
