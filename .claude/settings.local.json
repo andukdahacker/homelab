@@ -3,7 +3,10 @@
     "allow": [
       "WebSearch",
       "Bash(python3:*)",
-      "Bash(go mod:*)"
+      "Bash(go mod:*)",
+      "Bash(docker compose:*)",
+      "Read(//dev/**)",
+      "Bash(docker manifest:*)"
     ]
   }
 }

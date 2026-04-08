@@ -4,4 +4,108 @@ networks:
     driver: bridge
 
 services:
-  # Services defined in Story 1.2
+  # === GPU Service ===
+
+  # Requires NVIDIA Container Toolkit installed on host
+  ollama:
+    image: ollama/ollama:0.20.3
+    container_name: ollama
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 16g
+    volumes:
+      - /data/homelab/ollama/:/root/.ollama
+    ports:
+      - "11434:11434"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # === Monitoring ===
+
+  loki:
+    image: grafana/loki:3.7.1
+    container_name: loki
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 1g
+    volumes:
+      - /data/homelab/loki/:/loki
+      - ./configs/loki/config.yaml:/etc/loki/config.yaml:ro
+    ports:
+      - "3100:3100"
+
+  grafana:
+    image: grafana/grafana:12.4.2
+    container_name: grafana
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      - /data/homelab/grafana/:/var/lib/grafana
+      - ./configs/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./configs/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - loki
+
+  # === Data & Services ===
+
+  qdrant:
+    image: qdrant/qdrant:v1.17.0
+    container_name: qdrant
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 2g
+    volumes:
+      - /data/homelab/qdrant/:/qdrant/storage
+
+  gitea:
+    image: gitea/gitea:1.25.5
+    container_name: gitea
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      - /data/homelab/gitea/:/data
+
+  n8n:
+    image: n8nio/n8n:1.76.4
+    container_name: n8n
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 1g
+    volumes:
+      - /data/homelab/n8n/:/home/node/.n8n
+
+  # === Reverse Proxy ===
+
+  caddy:
+    image: caddy:2.11.2
+    container_name: caddy
+    env_file: .env
+    networks:
+      - homelab
+    restart: unless-stopped
+    mem_limit: 256m
+    volumes:
+      - /data/homelab/caddy/:/data
+      - ./configs/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    ports:
+      - "80:80"
+      - "443:443"
